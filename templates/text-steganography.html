@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHOSTCODE - Text Steganography</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a202c;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 2rem;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            color: #a0aec0;
+        }
+        .stego-form {
+            background-color: #2d3748;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #a0aec0;
+        }
+        .form-group input[type="file"],
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #4a5568;
+            border-radius: 0.25rem;
+            background-color: #2d3748;
+            color: #fff;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .form-group input[type="file"] {
+            padding: 0.5rem;
+        }
+        .btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #667eea;
+            color: #fff;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #5a67d8;
+        }
+        .output-section {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .output-section h2 {
+            margin-bottom: 1rem;
+        }
+        #downloadBtn {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>GHOSTCODE</h1>
+            <p>Text Steganography</p>
+        </div>
+        <form class="stego-form" id="encodeForm">
+            <div class="form-group">
+                <label for="textFile">Upload Text File (.txt)</label>
+                <input type="file" id="textFile" accept=".txt" required>
+            </div>
+            <div class="form-group">
+                <label for="privateKey">Private Key</label>
+                <input type="password" id="privateKey" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message to Hide</label>
+                <textarea id="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn">Hide</button>
+        </form>
+        <form class="stego-form" id="decodeForm" style="margin-top: 2rem;">
+            <div class ="form-group">
+                <label for="stegoFile">Upload Steganographic File (.txt)</label>
+                <input type="file" id="stegoFile" accept=".txt" required>
+            </div>
+            <div class="form-group">
+                <label for="decodePrivateKey">Private Key</label>
+                <input type="password" id="decodePrivateKey" required>
+            </div>
+            <button type="submit" class="btn">Decode</button>
+        </form>
+        <div class="output-section">
+            <h2>Output</h2>
+            <p id="outputMessage"></p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+        document.getElementById('encodeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('file', document.getElementById('textFile').files[0]);
+            formData.append('privateKey', document.getElementById('privateKey').value);
+            formData.append('message', document.getElementById('message').value);
+        
+            axios.post('/encode_text', formData, {responseType: 'blob'})
+            .then(function(response){
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', 'encoded_text.txt');
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    document.getElementById('outputMessage').textContent = 'Encoding successful! File downloaded.';
+
+                    //Clear IP fields
+                    document.getElementById('textFile').value = '';
+                    document.getElementById('privateKey').value = '';
+                    document.getElementById('message').value = '';
+                })
+                .catch(function(error){
+                    document.getElementById('outputMessage').textContent = 'Error: ' + (error.response ? error.response.data.error : error.message);
+                });
+        });
+
+        document.getElementById('decodeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('file', document.getElementById('stegoFile').files[0]);
+            formData.append('privateKey', document.getElementById('decodePrivateKey').value);
+        
+            axios.post('/decode_text', formData)
+                .then(function (response) {
+                    document.getElementById('outputMessage').textContent = 'Decoded message: ' + response.data.message;
+                    
+                    // Clear input fields
+                    document.getElementById('stegoFile').value = '';
+                    document.getElementById('decodePrivateKey').value = '';
+                })
+                .catch(function (error) {
+                    document.getElementById('outputMessage').textContent = 'Error: ' + (error.response ? error.response.data.error : error.message);
+                });
+        });        
+    </script>
+</body>
+</html>
