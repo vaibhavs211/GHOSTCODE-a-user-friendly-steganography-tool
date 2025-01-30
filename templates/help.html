@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHOSTCODE - Help</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a202c;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color: #2d3748;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .navbar-links a, .navbar-links button {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .navbar-links a:hover, .navbar-links button:hover {
+            color: #fff;
+        }
+        .navbar-links button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font: inherit;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex-grow: 1;
+        }
+        h1, h2 {
+            margin-bottom: 1rem;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">GHOSTCODE</a>
+        <div class="navbar-links">
+            <a href="/">Home</a>
+            <a href="about">About</a>
+            <a href="#">Help</a>
+            <a href="/#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Help Center</h1>
+        <p>
+            Welcome to the GHOSTCODE Help Center. Here you'll find guidance on how to use our steganography tools and 
+            answers to frequently asked questions.
+        </p>
+        
+        <h2>Quick Start Guide</h2>
+        <ol>
+            <li>Choose your preferred steganography method (Text, Audio, Image, or Video).</li>
+            <li>Upload the file you want to use as a carrier for your hidden message.</li>
+            <li>Enter your secret message and a private key.</li>
+            <li>Click the "Hide" button to process your file.</li>
+            <li>Download the resulting file, which now contains your hidden message.</li>
+        </ol>
+
+        <div class="faq">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <p class="faq-question">Q: What is steganography?</p>
+                <p>A: Steganography is the practice of concealing a file, message, image, or video within another file, message, image, or video.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Q: Is GHOSTCODE secure?</p>
+                <p>A: Yes, GHOSTCODE uses advanced algorithms to ensure that your hidden messages are secure and undetectable by casual observation.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Q: What file types can I use with GHOSTCODE?</p>
+                <p>A: GHOSTCODE supports .txt files for text steganography, .wav files for audio and .png files for images</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Q: Why do I need a private key?</p>
+                
+                <p>A: The private key adds an extra layer of security. Only someone with both the steganographic file and the correct private key can extract the hidden message.</p>
+            </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Q: How can I extract a hidden message?</p>
+                <p>A: We're working on an extraction feature. For now, GHOSTCODE focuses on hiding messages. Stay tuned for updates!</p>
+            </div>
+        </div>
+
+        <p>
+            If you have any other questions or need further assistance, please don't hesitate to contact our support team.
+        </p>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
+</html>
