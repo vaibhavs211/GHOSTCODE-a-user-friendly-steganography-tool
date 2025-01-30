@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHOSTCODE - Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a202c;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color: #2d3748;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .navbar-links a, .navbar-links button {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .navbar-links a:hover, .navbar-links button:hover {
+            color: #fff;
+        }
+        .navbar-links button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font: inherit;
+        }
+        .container {
+            max-width: 1000px; /* Updated max-width */
+            margin: 0 auto;
+            padding: 2rem;
+            flex-grow: 1;
+        }
+        h1, h2 {
+            margin-bottom: 1rem;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .stego-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem; /* Updated gap */
+            margin-bottom: 2rem;
+        }
+        .stego-link {
+            flex: 0 1 calc(50% - 0.75rem); /* Updated flex */
+            max-width: 250px; /* Updated max-width */
+            background-color: #2d3748;
+            padding: 1.5rem; /* Updated padding */
+            border-radius: 0.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            transition: background-color 0.3s, transform 0.3s; /* Added transform transition */
+        }
+        .stego-link:hover {
+            background-color: #4a5568;
+            transform: translateY(-5px); /* Added hover transform */
+        }
+        .contact {
+            background-color: #2d3748;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+        .contact h2 {
+            margin-top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">GHOSTCODE</a>
+        <div class="navbar-links">
+            <a href="#">Home</a>
+            <a href="about">About</a>
+            <a href="help">Help</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to GHOSTCODE</h1>
+        <p>
+            GHOSTCODE is a cutting-edge steganography tool that allows you to hide secret messages within various types of files. 
+            Our advanced algorithms ensure that your hidden data remains undetectable, providing you with a secure way to 
+            communicate sensitive information.
+        </p>
+
+        <h2>Our Steganography Techniques</h2>
+        <div class="stego-links">
+            <a href="text-steganography" class="stego-link">Text Steganography</a>
+            <a href="audio-steganography" class="stego-link">Audio Steganography</a>
+            <a href="image-steganography" class="stego-link">Image Steganography</a>
+        </div>
+
+        <p>
+            Choose from our range of steganography techniques to hide your messages in text, audio or image files. 
+            Each method offers unique advantages and levels of security, ensuring that you can find the perfect solution for 
+            your specific needs.
+        </p>
+
+        <div id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <p>
+                Have questions or need support? We're here to help!
+            </p>
+            <p>
+                Email: singhavivm@rknec.edu<br>
+                Phone: +91 99xxxxxxxx <br>
+                Address: Ramdeobaba University, Nagpur
+            </p>
+            <p>
+                Our support team is available Monday through Friday, 9 AM to 5 PM IST.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
