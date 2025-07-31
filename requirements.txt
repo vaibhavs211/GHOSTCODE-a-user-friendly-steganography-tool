@@ -2,7 +2,7 @@ Flask==3.0.0
 numpy
 gunicorn
 pydub==0.25.1  
-Pillow==10.1.0  
+Pillow
 cryptography==41.0.5  
 opencv-python==4.8.1.78  
 wave==0.0.2  
