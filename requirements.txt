@@ -1,8 +1,8 @@
 Flask==3.0.0  
-numpy
-gunicorn
+numpy>=1.26.0,<2  
+gunicorn  
 pydub==0.25.1  
-Pillow
+Pillow  
 cryptography==41.0.5  
 opencv-python==4.8.1.78  
-wave==0.0.2  
+wave==0.0.2
